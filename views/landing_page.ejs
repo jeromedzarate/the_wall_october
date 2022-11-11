@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wall</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/signup.css">    
+    <script src="../assets/js/signup.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="signup_container">
+            <h3>Create an Account</h3>
+            <p>Already have an account?<button id="show_signin_btn">Signin</button></p>
+
+            <form action="/signup" method="post" data-is_processing="0" id="signup_form">
+                <label for="first_name">
+                    <span>First Name</span>
+                    <input type="text" name="first_name" id="first_name_field">
+                </label>
+                <label for="last_name">
+                    <span>Last Name</span>
+                    <input type="text" name="last_name" id="last_name_field">
+                </label>
+                <label for="email">
+                    <span>Email</span>
+                    <input type="text" name="email" id="email_field">
+                </label>
+                <label for="password">
+                    <span>Password</span>
+                    <input type="password" name="password" id="password_field">
+                </label>
+                <label for="confirm_password">
+                    <span>Confirm Password</span>
+                    <input type="password" name="confirm_password" id="confirm_password_field">
+                </label>
+                <input type="hidden" name="is_signup" value="true">
+                <button type="submit">Create</button>
+            </form>
+        </div>
+        <div id="signin_container" hidden>
+            <h3>Welcome Back!</h3>
+            <p>Not yet registered?<button id="show_signup_btn">Signup</button></p>
+
+            <form action="/signup" method="post" data-is_processing="0" id="signin_form">
+                <label for="email">
+                    <span>Email</span>
+                    <input type="text" name="email" id="email_field">
+                </label>
+                <label for="password">
+                    <span>Password</span>
+                    <input type="password" name="password" id="password_field">
+                </label>
+                <button type="submit">Continue</button>
+            </form>
+        </div>
+    </div>   
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wall</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/wall.css">    
+    <script src="../assets/js/wall.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, <%= USER_DATA.first_name %>! <a href="/">Logout</a></h2>
+
+        <p>Post a message</p>
+        <form action="/wall/create_post" method="post" data-is_processing="0" id="create_post_form">
+            <input type="hidden" name="user_id" value="<%= USER_DATA.id %>">
+            <textarea name="message"></textarea>
+            <input type="submit" value="Post a message">
+        </form>
+
+        <div id="wall_post_container">
+            <%- include("./post_template.ejs", { user_id: USER_DATA.id, posts: WALL_POSTS, comments: COMMENTS }) %>
+        </div>
+
+        <form action="/wall/remove_post" method="post" data-is_processing="0" id="remove_post_form">
+            <input type="hidden" name="user_id" value="<%= USER_DATA.id %>">
+            <input type="hidden" name="post_id" id="post_id">
+        </form>
+        <form action="/wall/create_post" method="post" data-is_processing="0" id="create_comment_form" hidden>
+            <input type="hidden" name="user_id" value="<%= USER_DATA.id %>">
+            <input type="hidden" name="post_id" id="post_id">
+            <textarea name="message"></textarea>
+            <input type="submit" value="Post a message">
+        </form>
+    </div>
+</body>
+</html>

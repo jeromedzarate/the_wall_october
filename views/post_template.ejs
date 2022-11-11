@@ -1,0 +1,38 @@
+<% posts.forEach(function(post_data){ 
+    let is_comment = Boolean(post_data.parent_post_id); %>
+    <div class="<%= (!is_comment) ? 'post_container' : 'comment_container' %>">
+        <div>
+            <h5><%= post_data.name %> - <%= post_data.date_posted %></h5>
+            <p><%= post_data.message %></p>
+        </div>
+        <div data-parent_post_id="<%= post_data.post_id %>" data-post_id="<%= post_data.post_id %>">
+            <% if(!is_comment){ %>
+                <button class="create_comment_btn">Add comment</button>
+            <% } %>
+            <% if(parseInt(user_id) === parseInt(post_data.id)){ %>
+                <button class="delete_post_btn">Remove Post</button>
+            <% } %>
+        </div>
+
+        <% if(!is_comment){ %>
+            <div class="post_comment_container">
+                <% let post_comment = comments?.[post_data.post_id];
+
+                    post_comment && post_comment.forEach(function(comment_data){ %>
+                        <div class="comment_container">
+                            <div>
+                                <h5><%= comment_data.name %> - <%= comment_data.date_posted %></h5>
+                                <p><%= comment_data.message %></p>
+                            </div>
+                            <% if(parseInt(user_id) === parseInt(comment_data.id)){ %>
+                                <div data-parent_post_id="<%= post_data.post_id %>" data-post_id="<%= comment_data.post_id %>">
+                                    <button class="delete_post_btn">Remove Post</button>
+                                </div>
+                            <% } %>
+
+                        </div>
+                <%  }); %>
+            </div>
+        <% } %>
+    </div>
+<% }) %>

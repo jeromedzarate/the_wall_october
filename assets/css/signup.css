@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 700px;
+    margin: 50px auto;
+}
+
+h3{
+    font-size: 30px;
+}
+
+p{
+    font-size: 20px;
+    margin: 5px 0 0 5px;
+}
+
+p > button{
+    border: none;
+    background: none;
+    font-size: 18px;
+    margin-left: 5px;
+    color: #299bdd;
+    cursor: pointer;
+}
+
+form{
+    width: 600px;
+    margin: 20px auto 0 auto;
+}
+
+form input{
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+form span{
+    font-size: 20px;
+}
+
+form button{
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
